@@ -1,0 +1,15 @@
+MCU = RP2040
+BOOTLOADER = rp2040
+
+SERIAL_DRIVER = vendor
+
+REPEAT_KEY_ENABLE = yes
+
+CUSTOM_MATRIX = lite
+
+# Project specific files
+SRC += matrix.c $(EXTRA_SRC)
+
+# trackball
+POINTING_DEVICE_ENABLE = yes
+POINTING_DEVICE_DRIVER = pmw3360
