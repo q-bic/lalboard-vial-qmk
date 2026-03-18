@@ -45,30 +45,15 @@
 // #define POINTING_DEVICE_MOTION_PIN true  // only read from sensor if pin is active - disabled because feature does not with SPLIT_POINTING_ENABLE
 
 // one trackball on each side
-// TODO: enable scroll-only functionality for left device
 #define SPLIT_POINTING_ENABLE
 #define POINTING_DEVICE_COMBINED
 
-#define POINTING_DEVICE_ROTATION_90_RIGHT   // rotate XY data by 90 degrees
-#define POINTING_DEVICE_INVERT_Y_RIGHT      // invert Y axis
-// #define POINTING_DEVICE_ROTATION_90_LEFT
-// #define POINTING_DEVICE_INVERT_Y_LEFT
+#define POINTING_DEVICE_ROTATION_90   // rotate XY data by 90 degrees
+#define POINTING_DEVICE_INVERT_Y      // invert Y axis
+#define POINTING_DEVICE_ROTATION_90_RIGHT
+#define POINTING_DEVICE_INVERT_Y_RIGHT
 
 
 // TODO: enable auto mouse buttons on device move
 
-// is the following needed with vial - or can the scroll functionality configured with vial?
-/*
-void keyboard_post_init_user(void) {
-    pointing_device_set_cpi_on_side(true, 1000); //Set cpi on left side to a low value for slower scrolling.
-    pointing_device_set_cpi_on_side(false, 1600); //Set cpi on right side to a reasonable value for mousing.
-}
 
-report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, report_mouse_t right_report) {
-    left_report.h = left_report.x;
-    left_report.v = left_report.y;
-    left_report.x = 0;
-    left_report.y = 0;
-    return pointing_device_combine_reports(left_report, right_report);
-}
-*/
