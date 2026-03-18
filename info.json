@@ -22,7 +22,7 @@
     },
     "usb": {
         "vid": "0x5A69",
-        "pid": "0x3360",
+        "pid": "0x1418",
         "device_version": "0.1.0",
         "polling_interval": 1
     },
