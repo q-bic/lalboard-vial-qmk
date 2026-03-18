@@ -32,7 +32,19 @@ enum layer {
     NORMAL,
     NORMAL_HOLD,
     FUNC,
+    FUNC_HOLD,
     NAS,
+    L5,
+    L6,
+    L7,
+    L8,
+    L9,
+    L10,
+    L11,
+    L12,
+    L13,
+    L14,
+    MBO,
     NUM_LAYERS
 };
 
@@ -71,6 +83,40 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*LT*/ _______,         _______,        _______,        _______,        _______
     ),
 
+    [FUNC] = LAYOUT(
+             /*Center           North           East            South           West*/
+        /*R1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
+        /*R2*/ XXXXXXX,         KC_F8,          XXXXXXX,        KC_F7,          KC_END,
+        /*R3*/ KC_PSCR,         KC_F10,         KC_LGUI,        KC_F9,          KC_INS,
+        /*R4*/ KC_PAUSE,        KC_PGUP,        KC_F12,         KC_PGDN,        KC_F11,
+
+        /*L1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
+        /*L2*/ XXXXXXX,         KC_F6,          XXXXXXX,        KC_F5,          XXXXXXX,
+        /*L3*/ XXXXXXX,         KC_F4,          XXXXXXX,        KC_F3,          KC_ESC,
+        /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
+
+             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+        /*RT*/ MO(NAS),         KC_SPACE,       _______,        KC_BSPC,        KC_LALT,
+        /*LT*/ KC_LSFT,         KC_ENTER,       _______,        KC_TAB,         KC_LCTL
+    ),
+
+    [FUNC_HOLD] = LAYOUT(
+             /*Center           North           East            South           West*/
+        /*R1*/ KC_LEFT,         LCTL(KC_UP),    LCTL(KC_RIGHT), LCTL(KC_DOWN),  LCTL(KC_LEFT),
+        /*R2*/ KC_UP,           KC_MS_U,        KC_MS_R,        KC_MS_D,        KC_MS_L,
+        /*R3*/ KC_DOWN,         KC_WH_U,        KC_WH_R,        KC_WH_D,        KC_WH_L,
+        /*R4*/ KC_RIGHT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+
+        /*L1*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        /*L2*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        /*L3*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        /*L4*/ _______,         _______,        _______,        _______,        _______,
+
+             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+        /*RT*/ _______,         _______,        _______,        _______,        _______,
+        /*LT*/ _______,         _______,        _______,        _______,        _______
+    ),
+
     [NAS] = LAYOUT(
              /*Center           North           East            South           West*/
         /*R1*/ KC_7,            KC_AMPR,        KC_UNDS,        KC_KP_PLUS,     KC_6,
@@ -88,22 +134,21 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*LT*/ KC_LSFT,         KC_ENTER,       _______,        KC_TAB,         KC_LCTL
     ),
 
-    [FUNC] = LAYOUT(
+    [MBO] = LAYOUT(
              /*Center           North           East            South           West*/
-        /*R1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
-        /*R2*/ XXXXXXX,         KC_F8,          XXXXXXX,        KC_F7,          KC_END,
-        /*R3*/ KC_PSCR,         KC_F10,         KC_LGUI,        KC_F9,          KC_INS,
-        /*R4*/ KC_PAUSE,        KC_PGUP,        KC_F12,         KC_PGDN,        KC_F11,
+        /*R1*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_BTN1,        KC_TRNS,
+        /*R2*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_BTN3,        KC_TRNS,
+        /*R3*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_BTN2,        KC_TRNS,
+        /*R4*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,
 
-        /*L1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
-        /*L2*/ XXXXXXX,         KC_F6,          XXXXXXX,        KC_F5,          XXXXXXX,
-        /*L3*/ XXXXXXX,         KC_F4,          XXXXXXX,        KC_F3,          KC_ESC,
-        /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
+        /*L1*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_BTN1,        KC_TRNS,
+        /*L2*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_BTN3,        KC_TRNS,
+        /*L3*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_BTN2,        KC_TRNS,
+        /*L4*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,
 
-             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       _______,        KC_BSPC,        KC_LALT,
-        /*LT*/ KC_LSFT,         KC_ENTER,       _______,        KC_TAB,         KC_LCTL
-    ),
+        /*RT*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,
+        /*LT*/ KC_TRNS,         KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS
+    )
 };
 
 
