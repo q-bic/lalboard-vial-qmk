@@ -24,8 +24,27 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+// set scrolling speed - higher is slower
+#define SCROLL_DIVISOR_H 20.0
+#define SCROLL_DIVISOR_V 20.0
+
+void keyboard_post_init_user(void) {
+    // debug_enable=true;
+    // debug_matrix=true;
+    // debug_keyboard=true;
+    // debug_mouse=true;
+
+    pointing_device_set_cpi_on_side(true, 1000); // Set cpi on left side to a low value for slower scrolling.
+    pointing_device_set_cpi_on_side(false, 1600); // Set cpi on right side to a reasonable value for mousing.
+}
+
+void pointing_device_init_user(void) {
+    set_auto_mouse_layer(5); // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
+    set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
+}
+
 enum my_keycodes {
-  KC_NORMAL_HOLD = SAFE_RANGE,
+    KC_NORMAL_HOLD = SAFE_RANGE,
 };
 
 enum layer {
@@ -34,16 +53,6 @@ enum layer {
     FUNC,
     FUNC_HOLD,
     NAS,
-    L5,
-    L6,
-    L7,
-    L8,
-    L9,
-    L10,
-    L11,
-    L12,
-    L13,
-    L14,
     MBO,
     NUM_LAYERS
 };
@@ -153,39 +162,23 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case KC_NORMAL_HOLD:
-      if (record->event.pressed) {
-          layer_clear();
-          default_layer_set(1 << NORMAL);
-          layer_on(NORMAL_HOLD);
-      } else {
-          layer_off(NORMAL_HOLD);
-      }
-      return false;
-    default:
-      return true;
-  }
+    switch (keycode) {
+        case KC_NORMAL_HOLD:
+            if (record->event.pressed) {
+                layer_clear();
+                default_layer_set(1 << NORMAL);
+                layer_on(NORMAL_HOLD);
+            } else {
+                layer_off(NORMAL_HOLD);
+            }
+            return false;
+        default:
+            return true;
+    }
 }
 
-void keyboard_post_init_user(void) {
-    // debug_enable=true;
-    // debug_matrix=true;
-    // debug_keyboard=true;
-    // debug_mouse=true;
-
-    pointing_device_set_cpi_on_side(true, 1000); // Set cpi on left side to a low value for slower scrolling.
-    pointing_device_set_cpi_on_side(false, 1600); // Set cpi on right side to a reasonable value for mousing.
-}
-
-
-void mouse_mode(bool);
 
 /*** use left pointing device only for scrolling ***/
-
-// set scrolling speed - higher is slower
-#define SCROLL_DIVISOR_H 20.0
-#define SCROLL_DIVISOR_V 20.0
 
 // Variables to store accumulated scroll values
 float scroll_accumulated_h = 0;
@@ -209,3 +202,4 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
 
     return pointing_device_combine_reports(left_report, right_report);
 }
+
