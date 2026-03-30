@@ -8,7 +8,7 @@
 #define MATRIX_COLS 5
 
 // invert pin logic for "down" keys on all clusters
- #define MATRIX_COL_PUSHED_STATES { 0, 0, 1, 0, 0 }
+#define MATRIX_COL_PUSHED_STATES { 1, 1, 0, 1, 1 }
 
 #define DEBOUNCE 0 // reduces chatter (unintended double-presses) - set 0 if debouncing is not needed
 
