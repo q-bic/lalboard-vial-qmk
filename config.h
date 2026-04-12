@@ -60,3 +60,16 @@
 #define POINTING_DEVICE_ROTATION_90_RIGHT
 #define POINTING_DEVICE_INVERT_Y_RIGHT
 
+// layer indicator led
+// https://docs.qmk.fm/#/feature_rgblight?id=configuration
+#define WS2812_DI_PIN GP28
+#define RGBLED_SPLIT { 1, 1 }
+#define RGBLIGHT_LAYERS_RETAIN_VAL
+#define RGBLIGHT_LAYERS 16 //DYNAMIC_KEYMAP_LAYER_COUNT
+#define RGBLIGHT_DEFAULT_SAT 0 // white?
+#define RGBLIGHT_LIMIT_VAL 255
+#define RGBLIGHT_DEFAULT_VAL 128
+#define RGBLIGHT_SLEEP // don't annoy when host asleep
+#define RGBLIGHT_MAX_LAYERS 16 //DYNAMIC_KEYMAP_LAYER_COUNT
+#define RGBLIGHT_VAL_STEP 10
+#define RGBLIGHT_LED_COUNT 2

@@ -39,7 +39,6 @@ void keyboard_post_init_user(void) {
 }
 
 void pointing_device_init_user(void) {
-    //set_auto_mouse_layer(5); // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
     set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
 }
 
@@ -203,3 +202,22 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
     return pointing_device_combine_reports(left_report, right_report);
 }
 
+/*** layer indicator led ***/
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+        case 0: // NORMAL
+            rgblight_sethsv_noeeprom(0,  0, rgblight_get_val()); // white
+            break;
+        case 2: // FUNC & FUNC_HOLD
+        case 3:
+            rgblight_sethsv_noeeprom(188,  255, rgblight_get_val()); // purple
+            break;
+        case 5: // MOUSE
+            rgblight_sethsv_noeeprom(35,  255, rgblight_get_val()); // yellow
+            break;
+        default: //  for any other layers
+            rgblight_sethsv_noeeprom(0,  255, rgblight_get_val()); // red
+            break;
+    }
+    return state;
+}

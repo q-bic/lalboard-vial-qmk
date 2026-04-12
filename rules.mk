@@ -13,3 +13,9 @@ SRC += matrix.c $(EXTRA_SRC)
 # trackball
 POINTING_DEVICE_ENABLE = yes
 POINTING_DEVICE_DRIVER = pmw3360
+
+# layer indicator led
+RGBLIGHT_ENABLE = yes
+RGBLIGHT_SPLIT = yes
+RGBLIGHT_DRIVER = ws2812
+WS2812_DRIVER = vendor
