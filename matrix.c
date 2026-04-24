@@ -51,7 +51,7 @@ static inline void setPinOutput_writeLow(pin_t pin) {
 
 void matrix_init_custom(void) {
     for (int row = 0; row < MATRIX_ROWS/2; row++) {
-        setPinOutput_writeHigh(row_pins[row]);
+        setPinOutput_writeLow(row_pins[row]);
     }
 
     for (int col = 0; col < MATRIX_COLS; col++) {
@@ -78,13 +78,13 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
 
     for (int row = 0; row < MATRIX_ROWS/2; row++) {
         pin_t row_pin = row_pins[row];
-        setPinOutput_writeLow(row_pin);
+        setPinOutput_writeHigh(row_pin);
         wait_us(15);
 
         matrix_row_t new_row = read_row();
         changed |= new_row != current_matrix[row];
         current_matrix[row] = new_row;
-        setPinOutput_writeHigh(row_pin);
+        setPinOutput_writeLow(row_pin);
 
         wait_us(100);
     }
@@ -94,6 +94,6 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
 
 void matrix_power_down(void) {
     for (int row = 0; row < MATRIX_ROWS/2; row++) {
-        setPinOutput_writeHigh(row_pins[row]);
+        setPinOutput_writeLow(row_pins[row]);
     }
 }

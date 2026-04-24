@@ -34,6 +34,12 @@ void keyboard_post_init_user(void) {
     // debug_keyboard=true;
     // debug_mouse=true;
 
+    gpio_set_pin_input_high(GP2);
+    gpio_set_pin_input_high(GP3);
+    gpio_set_pin_input_high(GP4);
+    gpio_set_pin_input_high(GP5);
+    gpio_set_pin_input_high(GP6);
+
     pointing_device_set_cpi_on_side(true, 1000); // Set cpi on left side to a low value for slower scrolling.
     pointing_device_set_cpi_on_side(false, 1600); // Set cpi on right side to a reasonable value for mousing.
 }

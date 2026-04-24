@@ -8,7 +8,8 @@
 #define MATRIX_COLS 5
 
 // invert pin logic for "down" keys on all clusters
-#define MATRIX_COL_PUSHED_STATES { 1, 1, 0, 1, 1 }
+// #define MATRIX_COL_PUSHED_STATES { 1, 1, 0, 1, 1 }
+#define MATRIX_COL_PUSHED_STATES { 0, 0, 1, 0, 0 }
 
 #define DEBOUNCE 0 // reduces chatter (unintended double-presses) - set 0 if debouncing is not needed
 
@@ -62,7 +63,7 @@
 
 // layer indicator led
 // https://docs.qmk.fm/#/feature_rgblight?id=configuration
-#define WS2812_DI_PIN GP28
+#define WS2812_DI_PIN GP14
 #define RGBLED_SPLIT { 1, 1 }
 #define RGBLIGHT_LAYERS_RETAIN_VAL
 #define RGBLIGHT_LAYERS 16 //DYNAMIC_KEYMAP_LAYER_COUNT
